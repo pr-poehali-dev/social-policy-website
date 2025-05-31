@@ -5,50 +5,53 @@ import Icon from "@/components/ui/icon";
 const NewsSection = () => {
   const news = [
     {
-      date: "15 мая 2024",
-      category: "Пенсии",
-      title: "Индексация пенсий превысила уровень инфляции",
+      date: "20 мая 2024",
+      category: "Прорыв",
+      title: "Новый метод стимуляции спинного мозга у детей",
       summary:
-        "Страховые пенсии проиндексированы на 7,5%, что выше официального уровня инфляции за предыдущий год",
+        "Российские ученые разработали безопасную методику электростимуляции для детей с ДЦП",
+      icon: "Zap",
+    },
+    {
+      date: "15 мая 2024",
+      category: "Технологии",
+      title: "ИИ помогает в диагностике ДЦП",
+      summary:
+        "Искусственный интеллект позволяет выявлять ДЦП на 6 месяцев раньше обычного",
+      icon: "Bot",
     },
     {
       date: "10 мая 2024",
-      category: "Семейная политика",
-      title: "Расширены программы поддержки многодетных семей",
+      category: "Достижения",
+      title: "Реабилитационный центр получил международное признание",
       summary:
-        "Введены новые меры поддержки, включая льготную ипотеку и дополнительные выплаты на детей",
-    },
-    {
-      date: "5 мая 2024",
-      category: "Здравоохранение",
-      title: "Запуск новых программ профилактики заболеваний",
-      summary:
-        'Национальный проект "Здравоохранение" включает расширенные программы скрининга и вакцинации',
+        "Московский центр детской реабилитации стал лучшим в Европе по результатам лечения",
+      icon: "Award",
     },
   ];
 
   const getCategoryColor = (category: string) => {
     switch (category) {
-      case "Пенсии":
+      case "Прорыв":
         return "bg-green-100 text-green-700";
-      case "Семейная политика":
+      case "Технологии":
         return "bg-blue-100 text-blue-700";
-      case "Здравоохранение":
-        return "bg-red-100 text-red-700";
+      case "Достижения":
+        return "bg-yellow-100 text-yellow-700";
       default:
         return "bg-gray-100 text-gray-700";
     }
   };
 
   return (
-    <section className="py-16 px-6 bg-gray-50">
+    <section className="py-16 px-6 bg-gradient-to-br from-pink-50 via-blue-50 to-purple-50">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Последние обновления
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+            Последние новости и достижения
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Актуальная информация о изменениях в социальной политике
+            Актуальная информация о прогрессе в лечении ДЦП
           </p>
         </div>
 
@@ -56,11 +59,12 @@ const NewsSection = () => {
           {news.map((item, index) => (
             <Card
               key={index}
-              className="hover:shadow-lg transition-shadow duration-300 border-0 shadow-md"
+              className="hover:shadow-xl transition-all duration-300 border-0 shadow-md bg-white/90 backdrop-blur-sm"
             >
               <CardHeader className="pb-3">
-                <div className="flex justify-between items-start mb-2">
+                <div className="flex justify-between items-start mb-3">
                   <Badge className={getCategoryColor(item.category)}>
+                    <Icon name={item.icon as any} size={12} className="mr-1" />
                     {item.category}
                   </Badge>
                   <span className="text-sm text-gray-500 flex items-center">
@@ -68,7 +72,7 @@ const NewsSection = () => {
                     {item.date}
                   </span>
                 </div>
-                <CardTitle className="text-lg leading-tight text-gray-900">
+                <CardTitle className="text-lg leading-tight text-gray-800">
                   {item.title}
                 </CardTitle>
               </CardHeader>
